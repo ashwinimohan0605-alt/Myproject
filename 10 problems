@@ -1,0 +1,261 @@
+# Myproject
+Problem 1(Basic Virtual Function) :
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void show() {
+        cout << "This is Base class show function\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        cout << "This is Derived class show function\n";
+    }
+};
+
+int main() {
+    Base* b;
+    Derived d;
+    b = &d;
+    b->show();
+}
+
+Problem 2(Virtual Function with Multiple Derived Classes):
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing Shape\n";
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() {
+        cout << "Drawing Circle\n";
+    }
+};
+
+class Square : public Shape {
+public:
+    void draw() {
+        cout << "Drawing Square\n";
+    }
+};
+
+int main() {
+    Shape* s;
+    Circle c;
+    Square sq;
+
+    s = &c;
+    s->draw();
+
+    s = &sq;
+    s->draw();
+}
+
+Problem 3(Virtual Function for Area calculation):
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void area() {
+        cout << "Area not defined\n";
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void area() {
+        cout << "Area of Rectangle\n";
+    }
+};
+
+int main() {
+    Shape* s;
+    Rectangle r;
+    s = &r;
+    s->area();
+}
+Problem 4(Virtual Destructor):
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual ~Base() {
+        cout << "Base Destructor\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    ~Derived() {
+        cout << "Derived Destructor\n";
+    }
+};
+
+int main() {
+    Base* b = new Derived();
+    delete b;
+}
+Problem 5(Pure Virtual Function):
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    void sound() {
+        cout << "Dog barks\n";
+    }
+};
+
+int main() {
+    Dog d;
+    d.sound();
+}
+Problem 6(Virtual Function with parameters):
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void display(int x) {
+        cout << "Base: " << x << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display(int x) {
+        cout << "Derived: " << x << endl;
+    }
+};
+
+int main() {
+    Base* b;
+    Derived d;
+    b = &d;
+    b->display(10);
+}
+Problem 7(Function overriding):
+#include <iostream>
+using namespace std;
+
+class Parent {
+public:
+    virtual void show() {
+        cout << "Parent class\n";
+    }
+};
+
+class Child : public Parent {
+public:
+    void show() {
+        cout << "Child class\n";
+    }
+};
+
+int main() {
+    Parent* p;
+    Child c;
+    p = &c;
+    p->show();
+}
+Problem 8(Virtual Function in banking system):
+#include <iostream>
+using namespace std;
+
+class Bank {
+public:
+    virtual void interest() {
+        cout << "Bank interest\n";
+    }
+};
+
+class SBI : public Bank {
+public:
+    void interest() {
+        cout << "SBI interest is 6%\n";
+    }
+};
+
+int main() {
+    Bank* b;
+    SBI s;
+    b = &s;
+    b->interest();
+}
+Problem 9(Virtual Function with reference):
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void show() {
+        cout << "Base\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        cout << "Derived\n";
+    }
+};
+
+int main() {
+    Derived d;
+    Base& b = d;
+    b.show();
+}
+Problem 10(Rubtime Polymorphism with array of objects) :
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void speak() {
+        cout << "Animal speaks\n";
+    }
+};
+
+class Cat : public Animal {
+public:
+    void speak() {
+        cout << "Cat meows\n";
+    }
+};
+
+class Dog : public Animal {
+public:
+    void speak() {
+        cout << "Dog barks\n";
+    }
+};
+
+int main() {
+    Animal* a[2];
+    Cat c;
+    Dog d;
+
+    a[0] = &c;
+    a[1] = &d;
+
+    for(int i = 0; i < 2; i++) {
+        a[i]->speak();
+    }
+}
